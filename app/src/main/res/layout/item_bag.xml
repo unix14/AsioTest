@@ -4,17 +4,18 @@
     android:orientation="horizontal"
     android:gravity="center"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <EditText
         android:id="@+id/bag_item_index"
-        android:text="Bag #1"
+        tools:text="Bag #1"
         android:hint="Enter Bag index"
         android:gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/bag_item_weight"
@@ -24,6 +25,7 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:importantForAutofill="no" />
 
 </LinearLayout>

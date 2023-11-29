@@ -1,5 +1,6 @@
 package com.eyalya.test.asiotech.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,11 +21,22 @@ class BagsAdapter(private val bagsList: ArrayList<Bag> = arrayListOf()): Recycle
         holder.bind(bagsList[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(bags: ArrayList<Bag>?) {
+        bags?.let {
+            bagsList.clear()
+            bagsList.addAll(it)
+            notifyDataSetChanged()
+        }
+    }
+
+    fun getBags() = bagsList
+
     inner class BagDetailsViewHolder(private val binding: ItemBagBinding): ViewHolder(binding.root) {
 
         fun bind(bag: Bag) = with(binding) {
             bagItemIndex.setText(bag.id.toString())
-            bagItemWeight.setText(bag.weight.toString())
+            bagItemWeight.setText(String.format("%.2f", bag.weight))
         }
 
     }

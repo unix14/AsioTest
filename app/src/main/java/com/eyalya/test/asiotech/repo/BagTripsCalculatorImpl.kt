@@ -1,8 +1,10 @@
 package com.eyalya.test.asiotech.repo
 
+import com.eyalya.test.asiotech.logic.BagTripsCalculator
 import com.eyalya.test.asiotech.models.AlgResult
 import com.eyalya.test.asiotech.models.Bag
 import com.eyalya.test.asiotech.models.Trip
+import java.util.Random
 import javax.inject.Inject
 
 // Constructor-injected, because Hilt needs to know how to
@@ -42,5 +44,15 @@ class BagTripsCalculatorImpl @Inject constructor() : TripsCalculator {
             }
         }
         return AlgResult(trips.size, trips)
+    }
+
+    override fun getRandomBags(maxValue: Int): ArrayList<Bag> {
+        val bags = ArrayList<Bag>()
+        val random = Random()
+        for (i in 0 until maxValue) {
+            val weight = BagTripsCalculator.MINIMUM_WEIGHT + random.nextFloat() * (BagTripsCalculator.MAXIMUM_WEIGHT - BagTripsCalculator.MINIMUM_WEIGHT)
+            bags.add(Bag(i + 1, weight))
+        }
+        return bags
     }
 }
