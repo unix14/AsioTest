@@ -3,7 +3,9 @@ package com.eyalya.test.asiotech.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class BagsListFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
