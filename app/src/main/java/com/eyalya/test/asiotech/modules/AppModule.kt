@@ -13,6 +13,6 @@ abstract class AppModule {
 
     @Binds
     abstract fun bindTripsCalculator(
-        analyticsServiceImpl: BagTripsCalculatorImpl
+        bagTripsCalculatorImpl: BagTripsCalculatorImpl
     ): TripsCalculator
 }
