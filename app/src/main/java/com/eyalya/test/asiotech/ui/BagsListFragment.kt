@@ -1,6 +1,8 @@
 package com.eyalya.test.asiotech.ui
 
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +39,18 @@ class BagsListFragment: Fragment() {
     }
 
     private fun initUi() =with(binding) {
+        bagsCountInput.setOnEditorActionListener { v, actionId, event ->
+            Log.d("wow", "initUi: $actionId ${event?.action}")
+            if(actionId == KeyEvent.KEYCODE_BACK) {
+                refreshTable()
+            }
+            false
+        }
+    }
 
+    private fun refreshTable() = with(binding) {
+        val amountOfBags = bagsCountInput.text.toString().toIntOrNull()?: 0
+        viewModel.refreshTable(amountOfBags)
     }
 
 }

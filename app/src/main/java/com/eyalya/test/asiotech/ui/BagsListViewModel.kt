@@ -21,4 +21,8 @@ class BagsListViewModel @Inject constructor(private val tripsCalculator: BagTrip
 //        _bagsListData.postValue()
     }
 
+    fun refreshTable(amountOfBags: Int) {
+
+    }
+
 }
