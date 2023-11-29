@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#ac000000" /> <!-- Black background color -->
+
+    <!-- Set the corner radius to create a rounded rectangle -->
+    <corners android:radius="28dp" /> <!-- Adjust the radius according to your preference -->
+</shape>

@@ -1,42 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@drawable/black_background"
+    android:layout_margin="15dp"
+    android:animateLayoutChanges="true">
 
     <EditText
         android:id="@+id/bags_count_input"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/default_screen_padding"
-        android:gravity="center"
-        android:imeOptions="actionSend"
-        android:hint="Enter amount of bags"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_screen_padding"
+        android:gravity="center"
+        android:hint="Enter amount of bags"
+        android:imeOptions="actionSend"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="Autofill,HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bags_recycler"
-        app:layout_constraintTop_toBottomOf="@+id/bags_count_input"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/alg_calculate_btn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/alg_calculate_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bags_count_input" />
 
     <Button
         android:id="@+id/alg_calculate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_screen_padding"
-        app:layout_constraintStart_toStartOf="parent"
         android:text="@string/calculate"
+        app:layout_constraintBottom_toTopOf="@+id/algorithm_result"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/algorithm_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxHeight="180dp"
+        android:layout_margin="15dp"
+        android:padding="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars="vertical"
+        tools:ignore="HardcodedText"
+        tools:text="@tools:sample/lorem/random" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

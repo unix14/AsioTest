@@ -21,7 +21,7 @@ public class BagTripsCalculator {
         ArrayList<Bag> thrownBags = new ArrayList<>();
 
         // Sort bags based on weight in ascending order
-        bags.sort(Comparator.comparingDouble(bag -> bag.weight));
+        bags.sort(Comparator.comparingDouble(Bag::getWeight));
 
         // Iterate through bags
         for (int i = 0; i < bags.size(); i++) {

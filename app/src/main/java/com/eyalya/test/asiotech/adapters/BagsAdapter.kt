@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.eyalya.test.asiotech.common.formatToString
 import com.eyalya.test.asiotech.databinding.ItemBagBinding
 import com.eyalya.test.asiotech.models.Bag
 
@@ -36,7 +37,7 @@ class BagsAdapter(private val bagsList: ArrayList<Bag> = arrayListOf()): Recycle
 
         fun bind(bag: Bag) = with(binding) {
             bagItemIndex.setText(bag.id.toString())
-            bagItemWeight.setText(String.format("%.2f", bag.weight))
+            bagItemWeight.setText(bag.weight.formatToString())
         }
 
     }

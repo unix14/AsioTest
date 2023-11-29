@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.eyalya.test.asiotech.adapters.BagsAdapter
 import com.eyalya.test.asiotech.databinding.FragmentBagsListBinding
+import com.eyalya.test.asiotech.models.AlgResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,19 +42,35 @@ class BagsListFragment : Fragment() {
         buttonState.observe(viewLifecycleOwner) {
             handleButton(it)
         }
+        algResultData.observe(viewLifecycleOwner) {
+            handleAlgResult(it)
+        }
+    }
+
+    private fun handleAlgResult(result: AlgResult?) = with(binding){
+        algorithmResult.text = result?.let {
+            result.toString()
+        } ?: run {
+            ""
+        }
     }
 
     private fun handleButton(state: BagsListViewModel.ButtonState?) = with(binding) {
         when(state) {
             BagsListViewModel.ButtonState.GONE -> {
                 algCalculateBtn.visibility = View.GONE
+//                resultLayout.visibility = View.GONE
             }
             BagsListViewModel.ButtonState.INACTIVE -> {
                 algCalculateBtn.visibility = View.VISIBLE
+                bagsRecycler.visibility = View.VISIBLE
+//                resultLayout.visibility = View.GONE
                 algCalculateBtn.isActivated = false
             }
             BagsListViewModel.ButtonState.ACTIVE -> {
                 algCalculateBtn.visibility = View.VISIBLE
+                bagsRecycler.visibility = View.VISIBLE
+//                resultLayout.visibility = View.VISIBLE
                 algCalculateBtn.isActivated = true
             }
             else -> {}
@@ -69,7 +86,6 @@ class BagsListFragment : Fragment() {
         bagsCountInput.setOnEditorActionListener { v, actionId, event ->
             if (actionId == KeyEvent.KEYCODE_BACK) {
                 refreshTable()
-//                true
             }
             false
         }
