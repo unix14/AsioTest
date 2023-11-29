@@ -53,6 +53,12 @@ dependencies {
     //Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    // Fragment / viewmodel
+    val lifecycle = "2.6.2"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 }
 // Allow references to generated code
 kapt {

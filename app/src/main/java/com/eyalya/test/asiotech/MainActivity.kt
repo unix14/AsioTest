@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         loadFragment(BagsListFragment())
     }
 
-    fun loadFragment(fragment: Fragment) = with(binding){
-        supportFragmentManager.beginTransaction().add(fragment, fragment.tag).commit()
+    private fun loadFragment(fragment: Fragment) = with(binding){
+        supportFragmentManager.beginTransaction()
+            .replace(container.id, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
