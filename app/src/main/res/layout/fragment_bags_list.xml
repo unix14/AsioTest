@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/bags_recycler"
+        android:layout_marginTop="@dimen/default_screen_padding"
         android:gravity="center"
         android:imeOptions="actionSend"
         android:hint="Enter amount of bags"
@@ -24,11 +24,19 @@
         app:layout_constraintTop_toBottomOf="@+id/bags_count_input"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/alg_calculate_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:id="@+id/alg_calculate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/default_screen_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,26 @@ class BagsListFragment : Fragment() {
         bagsListData.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+        buttonState.observe(viewLifecycleOwner) {
+            handleButton(it)
+        }
+    }
+
+    private fun handleButton(state: BagsListViewModel.ButtonState?) = with(binding) {
+        when(state) {
+            BagsListViewModel.ButtonState.GONE -> {
+                algCalculateBtn.visibility = View.GONE
+            }
+            BagsListViewModel.ButtonState.INACTIVE -> {
+                algCalculateBtn.visibility = View.VISIBLE
+                algCalculateBtn.isActivated = false
+            }
+            BagsListViewModel.ButtonState.ACTIVE -> {
+                algCalculateBtn.visibility = View.VISIBLE
+                algCalculateBtn.isActivated = true
+            }
+            else -> {}
+        }
     }
 
     private fun initUi() = with(binding) {
@@ -52,6 +72,9 @@ class BagsListFragment : Fragment() {
 //                true
             }
             false
+        }
+        algCalculateBtn.setOnClickListener {
+            calculateTrips()
         }
     }
 

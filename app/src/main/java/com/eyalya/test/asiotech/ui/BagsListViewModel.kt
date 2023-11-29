@@ -14,18 +14,28 @@ class BagsListViewModel @Inject constructor(private val tripsCalculator: BagTrip
     private val _bagsListData: MutableLiveData<ArrayList<Bag>> = MutableLiveData(arrayListOf())
     val bagsListData: LiveData<ArrayList<Bag>> = _bagsListData
 
+    private val _buttonState: MutableLiveData<ButtonState> = MutableLiveData(ButtonState.GONE)
+    val buttonState: LiveData<ButtonState> = _buttonState
+
+    enum class ButtonState {
+        GONE, INACTIVE, ACTIVE
+    }
     init {
 //        val algResult: AlgResult = tripsCalculator.calculateBagTrips()
 //        _bagsListData.postValue()
     }
 
     fun refreshTable(amountOfBags: Int) {
+        _buttonState.postValue(ButtonState.INACTIVE)
         val randomBags = tripsCalculator.getRandomBags(amountOfBags)
         _bagsListData.postValue(randomBags)
+        _buttonState.postValue(ButtonState.ACTIVE)
     }
 
     fun calculateTrips(bags: ArrayList<Bag>)  {
+        _buttonState.postValue(ButtonState.INACTIVE)
 
+        _buttonState.postValue(ButtonState.ACTIVE)
     }
 
 }
