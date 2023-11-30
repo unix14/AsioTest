@@ -1,5 +1,7 @@
 package com.eyalya.test.asiotech.models;
 
+import static com.eyalya.test.asiotech.common.ConstantsKt.MAXIMUM_WEIGHT;
+
 import androidx.annotation.NonNull;
 import com.eyalya.test.asiotech.logic.BagTripsCalculator;
 
@@ -24,7 +26,7 @@ public class Trip {
     public boolean canAddBag(Bag bag) {
         float totalWeight = getTotalWeight();
         boolean isNotContainedInBags = !bags.contains(bag);
-        boolean newWeightIsOk = bag.getWeight() + totalWeight <= BagTripsCalculator.MAXIMUM_WEIGHT;
+        boolean newWeightIsOk = bag.getWeight() + totalWeight <= MAXIMUM_WEIGHT;
 
         //if added weight value is below max value, and if the bag isn't contains the bag already
         return newWeightIsOk && isNotContainedInBags;

@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:gravity="center"
+    android:background="@drawable/black_background"
+    android:backgroundTint="@color/blueish"
+    android:layout_margin="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -11,6 +14,7 @@
         tools:text="Bag #1"
         android:hint="Enter Bag index"
         android:gravity="center"
+        android:textColor="@color/white"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
@@ -23,9 +27,9 @@
         android:hint="Enter Bag Weight between 1.01 - 3.0 KG"
         android:layout_width="150dp"
         android:gravity="center"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         tools:ignore="HardcodedText"
         android:importantForAutofill="no" />
-
 </LinearLayout>

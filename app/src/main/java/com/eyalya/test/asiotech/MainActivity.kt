@@ -1,7 +1,7 @@
 package com.eyalya.test.asiotech
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.eyalya.test.asiotech.databinding.ActivityMainBinding
 import com.eyalya.test.asiotech.ui.BagsListFragment
@@ -18,10 +18,9 @@ class MainActivity : AppCompatActivity() {
         loadFragment(BagsListFragment())
     }
 
-    private fun loadFragment(fragment: Fragment) = with(binding){
+    private fun loadFragment(fragment: Fragment) = with(binding) {
         supportFragmentManager.beginTransaction()
             .replace(container.id, fragment)
-            .addToBackStack(null)
             .commit()
     }
 }

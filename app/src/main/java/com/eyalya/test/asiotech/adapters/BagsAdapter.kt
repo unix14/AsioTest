@@ -3,13 +3,15 @@ package com.eyalya.test.asiotech.adapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.eyalya.test.asiotech.common.formatToString
 import com.eyalya.test.asiotech.databinding.ItemBagBinding
 import com.eyalya.test.asiotech.models.Bag
 
-class BagsAdapter(private val bagsList: ArrayList<Bag> = arrayListOf()): RecyclerView.Adapter<BagsAdapter.BagDetailsViewHolder>() {
+class BagsAdapter(private val bagsList: ArrayList<Bag> = arrayListOf()) :
+    RecyclerView.Adapter<BagsAdapter.BagDetailsViewHolder>() {
 
     override fun getItemCount(): Int = bagsList.size
 
@@ -33,12 +35,26 @@ class BagsAdapter(private val bagsList: ArrayList<Bag> = arrayListOf()): Recycle
 
     fun getBags() = bagsList
 
-    inner class BagDetailsViewHolder(private val binding: ItemBagBinding): ViewHolder(binding.root) {
+    inner class BagDetailsViewHolder(private val binding: ItemBagBinding) :
+        ViewHolder(binding.root) {
 
+        init {
+            binding.apply {
+                bagItemIndex.doAfterTextChanged { editable ->
+                    editable.toString().toIntOrNull()?.let { index ->
+                        bagsList[adapterPosition].id
+                    }
+                }
+                bagItemWeight.doAfterTextChanged { editable ->
+                    editable.toString().toFloatOrNull()?.let { weight ->
+                        bagsList[adapterPosition].weight = weight
+                    }
+                }
+            }
+        }
         fun bind(bag: Bag) = with(binding) {
             bagItemIndex.setText(bag.id.toString())
             bagItemWeight.setText(bag.weight.formatToString())
         }
-
     }
 }

@@ -1,7 +1,6 @@
 package com.eyalya.test.asiotech.models;
 
 import androidx.annotation.NonNull;
-
 import java.util.ArrayList;
 
 public class AlgResult {

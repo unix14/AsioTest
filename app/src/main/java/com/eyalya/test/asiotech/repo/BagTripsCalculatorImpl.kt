@@ -1,6 +1,7 @@
 package com.eyalya.test.asiotech.repo
 
-import com.eyalya.test.asiotech.logic.BagTripsCalculator
+import com.eyalya.test.asiotech.common.MAXIMUM_WEIGHT
+import com.eyalya.test.asiotech.common.MINIMUM_WEIGHT
 import com.eyalya.test.asiotech.models.AlgResult
 import com.eyalya.test.asiotech.models.Bag
 import com.eyalya.test.asiotech.models.Trip
@@ -50,7 +51,7 @@ class BagTripsCalculatorImpl @Inject constructor() : TripsCalculator {
         val bags = ArrayList<Bag>()
         val random = Random()
         for (i in 0 until maxValue) {
-            val weight = BagTripsCalculator.MINIMUM_WEIGHT + random.nextFloat() * (BagTripsCalculator.MAXIMUM_WEIGHT - BagTripsCalculator.MINIMUM_WEIGHT)
+            val weight = MINIMUM_WEIGHT + random.nextFloat() * (MAXIMUM_WEIGHT - MINIMUM_WEIGHT)
             bags.add(Bag(i + 1, weight))
         }
         return bags

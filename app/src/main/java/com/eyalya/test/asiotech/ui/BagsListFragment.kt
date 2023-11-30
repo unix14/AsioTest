@@ -1,6 +1,7 @@
 package com.eyalya.test.asiotech.ui
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.eyalya.test.asiotech.adapters.BagsAdapter
 import com.eyalya.test.asiotech.databinding.FragmentBagsListBinding
 import com.eyalya.test.asiotech.models.AlgResult
+import com.eyalya.test.asiotech.models.ButtonState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BagsListFragment : Fragment() {
+    //todo make mail
 
     private lateinit var adapter: BagsAdapter
     private lateinit var binding: FragmentBagsListBinding
@@ -55,22 +58,19 @@ class BagsListFragment : Fragment() {
         }
     }
 
-    private fun handleButton(state: BagsListViewModel.ButtonState?) = with(binding) {
+    private fun handleButton(state: ButtonState?) = with(binding) {
         when(state) {
-            BagsListViewModel.ButtonState.GONE -> {
+            ButtonState.GONE -> {
                 algCalculateBtn.visibility = View.GONE
-//                resultLayout.visibility = View.GONE
             }
-            BagsListViewModel.ButtonState.INACTIVE -> {
+            ButtonState.INACTIVE -> {
                 algCalculateBtn.visibility = View.VISIBLE
                 bagsRecycler.visibility = View.VISIBLE
-//                resultLayout.visibility = View.GONE
                 algCalculateBtn.isActivated = false
             }
-            BagsListViewModel.ButtonState.ACTIVE -> {
+            ButtonState.ACTIVE -> {
                 algCalculateBtn.visibility = View.VISIBLE
                 bagsRecycler.visibility = View.VISIBLE
-//                resultLayout.visibility = View.VISIBLE
                 algCalculateBtn.isActivated = true
             }
             else -> {}
@@ -92,6 +92,7 @@ class BagsListFragment : Fragment() {
         algCalculateBtn.setOnClickListener {
             calculateTrips()
         }
+//        algorithmResult.movementMethod = ScrollingMovementMethod()
     }
 
     private fun refreshTable() = with(binding) {
@@ -103,5 +104,4 @@ class BagsListFragment : Fragment() {
         val bags = adapter.getBags()
         calculateTrips(bags)
     }
-
 }

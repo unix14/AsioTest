@@ -17,6 +17,7 @@
         android:hint="Enter amount of bags"
         android:imeOptions="actionSend"
         android:inputType="number"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,8 +27,10 @@
         android:id="@+id/bags_recycler"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/alg_calculate_btn"
         app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_bag"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bags_count_input" />
 
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/default_screen_padding"
         android:text="@string/calculate"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/algorithm_result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -45,16 +49,15 @@
         android:id="@+id/algorithm_result"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxHeight="180dp"
+        android:maxHeight="220dp"
         android:layout_margin="15dp"
         android:padding="25dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:scrollbars="vertical"
+        android:maxLines="18"
+        android:ellipsize="end"
         tools:ignore="HardcodedText"
         tools:text="@tools:sample/lorem/random" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

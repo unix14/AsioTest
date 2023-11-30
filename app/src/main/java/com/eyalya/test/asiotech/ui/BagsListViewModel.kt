@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.eyalya.test.asiotech.models.AlgResult
 import com.eyalya.test.asiotech.models.Bag
+import com.eyalya.test.asiotech.models.ButtonState
 import com.eyalya.test.asiotech.repo.BagTripsCalculatorImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -21,14 +22,6 @@ class BagsListViewModel @Inject constructor(private val tripsCalculator: BagTrip
     private val _algResultData: MutableLiveData<AlgResult?> = MutableLiveData(null)
     val algResultData: LiveData<AlgResult?> = _algResultData
 
-    enum class ButtonState {
-        GONE, INACTIVE, ACTIVE
-    }
-    init {
-//        val algResult: AlgResult = tripsCalculator.calculateBagTrips()
-//        _bagsListData.postValue()
-    }
-
     fun refreshTable(amountOfBags: Int) {
         _buttonState.postValue(ButtonState.INACTIVE)
         val randomBags = tripsCalculator.getRandomBags(amountOfBags)
@@ -40,7 +33,7 @@ class BagsListViewModel @Inject constructor(private val tripsCalculator: BagTrip
         _buttonState.postValue(ButtonState.INACTIVE)
         val result: AlgResult = tripsCalculator.calculateBagTrips(bags)
         _algResultData.postValue(result)
-        _buttonState.postValue(ButtonState.GONE)
+        _buttonState.postValue(ButtonState.ACTIVE)
     }
 
 }

@@ -3,16 +3,10 @@ package com.eyalya.test.asiotech.logic;
 import com.eyalya.test.asiotech.models.AlgResult;
 import com.eyalya.test.asiotech.models.Bag;
 import com.eyalya.test.asiotech.models.Trip;
-
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Random;
 
 public class BagTripsCalculator {
-    // Default const values 1.01-3.0Kg
-    public static final float MINIMUM_WEIGHT = 1.01f;
-    public static final float MAXIMUM_WEIGHT = 3f;
-
     // This is the algorithm, it takes an array of bags and brings back AlgResult
     AlgResult calculateBagTrips(ArrayList<Bag> bags) {
         //this is the returned value
@@ -102,17 +96,5 @@ public class BagTripsCalculator {
             Trip trip = result.trips.get(i);
             System.out.println("Trip " + (i + 1) + ": " + trip.bags);
         }
-    }
-
-    //function for testing different values.
-    public static ArrayList<Bag> getRandomBags() {
-        ArrayList<Bag> bags = new ArrayList<>();
-        Random random = new Random();
-
-        for (int i = 0; i < random.nextInt(12); i++) {
-            float weight = MINIMUM_WEIGHT + random.nextFloat() * (MAXIMUM_WEIGHT - MINIMUM_WEIGHT);
-            bags.add(new Bag(i + 1, weight));
-        }
-        return bags;
     }
 }
