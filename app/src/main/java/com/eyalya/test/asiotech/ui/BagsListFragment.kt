@@ -1,7 +1,6 @@
 package com.eyalya.test.asiotech.ui
 
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -92,7 +91,6 @@ class BagsListFragment : Fragment() {
         algCalculateBtn.setOnClickListener {
             calculateTrips()
         }
-//        algorithmResult.movementMethod = ScrollingMovementMethod()
     }
 
     private fun refreshTable() = with(binding) {
